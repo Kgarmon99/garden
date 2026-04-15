@@ -26,6 +26,8 @@ Install OpenClaw per upstream README (e.g. `npm install -g openclaw@latest`, the
 
 **Windows (from this repo):** run `powershell -ExecutionPolicy Bypass -File scripts/install-to-openclaw.ps1` from the `moneybot-openclaw` folder. That copies skills to `%USERPROFILE%\.openclaw\skills\` and mirrors the pack to `%USERPROFILE%\.openclaw\moneybot-openclaw`.
 
+**macOS / Linux:** from the `moneybot-openclaw` folder run `chmod +x scripts/*.sh` once, then `./scripts/install-to-openclaw.sh` (same layout under `~/.openclaw/`). Register the four agents with `./scripts/setup-four-moneybot-agents.sh` after OpenClaw is installed and `openclaw onboard` (or equivalent) has been completed per [OpenClaw docs](https://docs.openclaw.ai).
+
 1. Copy this entire `moneybot-openclaw` directory to a location your OpenClaw runtime can read, or keep it inside your product monorepo.
 
 2. **Skills** — For each folder under `.openclaw/skills/`, install per your OpenClaw version (e.g. symlink into `~/.openclaw/skills/` on Unix, or copy on Windows):
@@ -72,6 +74,13 @@ Templates live under `agents/<agent-id>/` (`AGENTS.md` + `IDENTITY.md`). Registe
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/setup-four-moneybot-agents.ps1
+```
+
+macOS / Linux:
+
+```bash
+chmod +x scripts/setup-four-moneybot-agents.sh
+./scripts/setup-four-moneybot-agents.sh
 ```
 
 That creates workspaces under `%USERPROFILE%\.openclaw\workspace-moneybot-*`, copies `schemas/`, and runs `openclaw agents add` + `set-identity` for each.
